@@ -15,6 +15,7 @@ var path = require('path');
 var stdin = require('get-stdin');
 var Fontmin = require('./');
 var _ = require('lodash');
+var rename = require('gulp-rename');
 
 var cli = meow({
     help: [
@@ -60,6 +61,8 @@ var cli = meow({
     }
 });
 
+// console.log(cli)
+
 // version
 if (cli.flags.version) {
     console.log(require('./package.json').version);
@@ -92,16 +95,20 @@ function run(src, dest) {
             glyph: cli.flags.cssGlyph
         }
     );
+    // console.log()    
+    var id = cli.flags.id
+    var source = cli.flags.source
 
     var fontmin = new Fontmin()
         .src(src)
-        .use(Fontmin.otf2ttf(pluginOpts))
+        .use(rename(`${source}-${id}.ttf`))
+        // .use(Fontmin.otf2ttf(pluginOpts))
         .use(Fontmin.glyph(pluginOpts))
-        .use(Fontmin.ttf2eot(pluginOpts))
-        .use(Fontmin.ttf2svg(pluginOpts))
-        .use(Fontmin.ttf2woff(pluginOpts))
-        .use(Fontmin.ttf2woff2(pluginOpts))
-        .use(Fontmin.css(pluginOpts));
+    // .use(Fontmin.ttf2eot(pluginOpts))
+    // .use(Fontmin.ttf2svg(pluginOpts))
+    // .use(Fontmin.ttf2woff(pluginOpts))
+    // .use(Fontmin.ttf2woff2(pluginOpts))
+    // .use(Fontmin.css(pluginOpts));
 
     if (process.stdout.isTTY) {
         fontmin.dest(dest ? dest : 'build');
