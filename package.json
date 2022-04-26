@@ -28,9 +28,9 @@
   ],
   "author": "junmer",
   "license": "MIT",
-  "repository": "ecomfe/fontmin",
+  "repository": "wangyujieGit/fontmin",
   "engines": {
-    "node": ">=8"
+    "node": ">=16"
   },
   "bin": {
     "fontmin": "cli.js"
