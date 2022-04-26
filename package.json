@@ -1,5 +1,5 @@
 {
-  "name": "fontmin",
+  "name": "fontmin-fork",
   "version": "0.9.9",
   "description": "Minify font seamlessly, font subsetter, webfont (eot, woff, svg) converter.",
   "main": "index.js",
