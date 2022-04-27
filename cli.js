@@ -110,9 +110,9 @@ function run(src, dest) {
     // .use(Fontmin.ttf2woff2(pluginOpts))
     // .use(Fontmin.css(pluginOpts));
 
-    if (process.stdout.isTTY) {
-        fontmin.dest(dest ? dest : 'build');
-    }
+    // if (process.stdout.isTTY) {
+    fontmin.dest(dest ? dest : 'build');
+    // }
 
     fontmin.run(function (err, files) {
         if (err) {
@@ -120,17 +120,20 @@ function run(src, dest) {
             process.exit(1);
         }
 
-        if (!process.stdout.isTTY) {
-            files.forEach(function (file) {
-                process.stdout.write(file.contents);
-            });
-        }
+        // if (!process.stdout.isTTY) {
+        files.forEach(function (file) {
+            process.stdout.write(file.contents);
+        });
+        // }
 
         cli.flags.showTime && console.timeEnd('fontmin use');
     });
 }
 
-if (process.stdin.isTTY) {
+// if (process.stdin.isTTY) {
+if (1) {
+    console.log('process.stdin.isTTY', cli)
+    // console.log()
     var src = cli.input;
     var dest;
 
@@ -165,5 +168,12 @@ if (process.stdin.isTTY) {
     run(src, dest);
 }
 else {
+    // stdin.buffer(run).then(res=>{
+    //     console.log(res)
+    // }).catch(err=>{
+    //     console.log(err)
+    // })
+    console.log('else')
+
     stdin.buffer(run);
 }

@@ -25,13 +25,13 @@
 ## Install
 
 ```sh
-$ npm install --save fontmin
+$ npm install --save fontmin-fork
 ```
 
 ## Usage
 
 ```js
-var Fontmin = require('fontmin');
+var Fontmin = require('fontmin-fork');
 
 var fontmin = new Fontmin()
     .src('fonts/*.ttf')
@@ -252,7 +252,7 @@ var fontmin = new Fontmin()
 ## CLI
 
 ```bash
-$ npm install -g fontmin
+$ npm install -g fontmin-fork
 ```
 
 ```sh
